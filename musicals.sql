@@ -8,6 +8,7 @@ CREATE TABLE shows (
 
 CREATE TABLE songs (
   id serial primary key,
+  title varchar(100) NOT NULL,
   embed_id varchar(50) NOT NULL,
-  show_id integer references shows(id)
+  show_id integer references shows(id) NOT NULL
 );

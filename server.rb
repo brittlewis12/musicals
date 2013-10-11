@@ -10,6 +10,11 @@ after do
   ActiveRecord::Base.clear_active_connections!
 end
 
+binding.pry
+
 helpers do; end
 
 get '/' do; end
+
+######## TO DO
+# save more millie, sunday in the park songs

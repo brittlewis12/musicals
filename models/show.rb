@@ -1,5 +1,5 @@
 class Show < ActiveRecord::Base
   has_many :songs
 
-  validates :attr, presence: true
+  validates :title, :year, :composer, :img_url, presence: true
 end

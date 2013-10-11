@@ -1,5 +1,5 @@
 class Song < ActiveRecord::Base
   belongs_to :show
 
-  validates :attr, presence: true
+  validates :embed_id, presence: true
 end

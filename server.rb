@@ -13,4 +13,3 @@ end
 helpers do; end
 
 get '/' do; end
-

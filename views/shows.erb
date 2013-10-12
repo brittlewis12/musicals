@@ -1,11 +1,16 @@
+<h1>Shows</h1>
+
+<ul>
 <% @shows.each do |show| %>
-  <p><% show.title %></p>
+  <li>
+    <a href="shows/<%= show.id %>"><%= show.title %></a>
+  </li>
 <% end %>
+</ul>
 
-<p>Create a <a href="shows/new"></a>new show</p>
+<p>Create a <a href="shows/new">new show</a></p>
 
 
-3. View a particular show & link create a new song
 4. Form to create new song
 5. List all songs from a show
 6. Individual song page

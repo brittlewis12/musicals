@@ -20,7 +20,7 @@ end
 # Index of all shows
 # with links to individual shows
 get "/shows/?" do
-  @shows = Show.all
+  @shows = Show.all.order("id ASC")
 
   erb :shows
 end
@@ -39,9 +39,9 @@ post "/shows/?" do
   show.composer = params[:composer]
   show.image_url = params[:image_url]
 
-  # If user input is valid, it is persisted
-  # to the database. Else, user is redirected
-  # back to the form
+  # If user input passes validation, it is
+  # persisted to the database. Else, user is
+  # redirected back to the form
   if show.valid?
     show.save!
     redirect "shows/#{show.id}"
@@ -63,11 +63,30 @@ end
 
 # Form to create new songs
 get "/shows/:id/songs/new/?" do
+  @id = params[:id]
+
+  erb :new_song
 end
 
 # Create action - new songs for a show - redirects
 # to that song
 post "/shows/:id/songs/?" do
+  song = Song.new
+  song.show_id = params[:id]
+  song.title = params[:title]
+  song.embed_id = params[:youtube_link].split("v=")[1]
+
+  # If user input passes validation, it is
+  # persisted to the database. Else, user is
+  # redirected back to the form
+  if song.valid?
+    song.save!
+    redirect "shows/#{song.show_id}/songs/#{song.id}"
+  else
+    # IN FUTURE:
+    # Should give user some indication of an error.
+    redirect "/shows/#{params[:id]}/songs/new"
+  end
 end
 
 # Lists all songs from the show

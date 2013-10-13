@@ -6,6 +6,8 @@ require_relative 'config/environments'
 require_relative 'models/show'
 require_relative 'models/song'
 
+binding.pry
+
 helpers do; end
 
 after do
@@ -37,14 +39,16 @@ post "/shows/?" do
   show.title = params[:title]
   show.year = params[:year]
   show.composer = params[:composer]
-  show.image_url = params[:image_url]
+  show.img_url = params[:img_url]
 
   # If user input passes validation, it is
   # persisted to the database. Else, user is
   # redirected back to the form
   if show.valid?
     show.save!
-    redirect "shows/#{show.id}"
+    if show.persisted?
+      redirect "shows/#{show.id}"
+    end
   else
     # IN FUTURE:
     # Should give user some indication of an error.
@@ -91,8 +95,15 @@ end
 
 # Lists all songs from the show
 get "/shows/:id/songs/?" do
+  @chosen_show = Show.find(params[:id])
+  @songs = @chosen_show.songs
+
+  erb :songs
 end
 
 # Shows just one song from the show
 get "/shows/:show_id/songs/:song_id/?" do
+  @chosen_song = Show.find(params[:show_id]).songs.find(params[:song_id])
+
+  erb :single_song
 end

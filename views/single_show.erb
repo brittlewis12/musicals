@@ -1,10 +1,10 @@
-<%= @chosen_show.title %>
+<h1><em><%= @chosen_show.title %></em></h1>
+
+<img src="<%= @chosen_show.img_url %>"
 
 <ul>
-<% @chosen_show.songs.each do |song| %>
-  <li>
-    <a href="/shows/<%= song.show %>/songs/<%= song.id %>"><%= song.title %></a>
-  </li>
-<% end %>
+  <li>Composer: <%= @chosen_show.composer %></li>
+  <li>Broadway debut: <%= @chosen_show.year %></li>
 </ul>
-<p>Create a <a href="/shows/<%= @chosen_show.id %>/songs/new">new song here</a>.</p>
+
+<p>View all <a href="/shows/<%= @chosen_show.id %>/songs"><em><%= @chosen_show.title %></em> songs</a></p>

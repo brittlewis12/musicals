@@ -1,0 +1,25 @@
+  <h1><em><%= @chosen_show.title %></em> songs</h1>
+
+<% if @songs.nil? %>
+  <ul>
+    <li>
+      <a href="/shows/<%= @chosen_show.id %>/songs/new">
+        Add a song for <em><%= @chosen_show.title %></em>!
+      </a>
+    </li>
+  </ul>
+<% else %>
+  <ul>
+  <% @songs.each do |song| %>
+    <li>
+      <a href="/shows/<%= @chosen_show.id %>/songs/<%= song.id %>">
+        <%= song.title %>
+      </a>
+    </li>
+    <br/>
+  <% end %>
+    <li>Something missing? <a href="/shows/<%= @chosen_show.id %>/songs/new">Add a song for <em><%= @chosen_show.title %></em></a>!</li>
+  </ul>
+<% end %>
+
+<p>Back to the <a href="/shows">list of shows</a></p>

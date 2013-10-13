@@ -3,9 +3,11 @@
 <ul>
 <% @shows.each do |show| %>
   <li>
-    <a href="shows/<%= show.id %>"><%= show.title %></a>
+    <em><a href="shows/<%= show.id %>"><%= show.title %></a></em>
   </li>
 <% end %>
+  <br/>
+  <li>Add <a href="shows/new">another show</a>!</li>
 </ul>
 
-<p>Create a <a href="shows/new">new show</a></p>
+<p>Back to the <a href="/">home page</a></p>

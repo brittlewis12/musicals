@@ -91,6 +91,11 @@ div.single_show, div.songs {
   vertical-align: top;
 }
 
+div.single_show ul {
+  width: 25%;
+
+}
+
 div.single_song {
   display: inline-block;
   word-wrap: normal;

@@ -1,7 +1,14 @@
 <h1><%= @chosen_song.title %></h1>
-<h4>from <em><%= @chosen_song.show.title %></em><br/>
-composed by <%= @chosen_song.show.composer %></h4>
+
+<div class="single_song">
 
 <iframe class="ytplayer" type="text/html" width="640" height="480" src="http://www.youtube.com/embed/<%= @chosen_song.embed_id %>" frameborder="0"></iframe>
+
+<ul>
+<li>from <em><%= @chosen_song.show.title %></em></li>
+<li>composed by <%= @chosen_song.show.composer %></li>
+</ul>
+
+</div>
 
 <p>Back to the <a href="/shows/<%= @chosen_song.show.id %>/songs">list of songs</a></p>

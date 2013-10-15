@@ -1,13 +1,17 @@
-<h1>Shows</h1>
+<div class="shows">
 
-<ul>
-<% @shows.each do |show| %>
-  <li>
-    <em><a href="shows/<%= show.id %>"><%= show.title %></a></em>
-  </li>
-<% end %>
-  <br/>
-  <li>Add <a href="shows/new">another show</a>!</li>
-</ul>
+  <h1>Shows</h1>
+
+  <ul>
+  <% @shows.each do |show| %>
+    <li>
+      <em><a href="shows/<%= show.id %>"><%= show.title %></a></em>
+    </li>
+  <% end %>
+    <br/>
+    <li>Add <a href="shows/new">another show</a></li>
+  </ul>
+
+</div>
 
 <p>Back to the <a href="/">home page</a></p>

@@ -1,6 +1,10 @@
-  <h1><em><%= @chosen_show.title %></em> songs</h1>
+<h1><em><%= @chosen_show.title %></em> songs</h1>
 
-<ul>
+<div class="songs">
+
+<img src="<%= @chosen_show.img_url %>">
+
+<ul> <h3>Songs</h3>
 <% @songs.each do |song| %>
   <li>
     <a href="/shows/<%= @chosen_show.id %>/songs/<%= song.id %>">
@@ -8,9 +12,10 @@
     </a>
   </li>
 <% end %>
+<br/>
+  <li>Something missing? <a href="/shows/<%= @chosen_show.id %>/songs/new">Add a song for <em><%= @chosen_show.title %></em></a></li>
 </ul>
-<ul>
-  <li>Something missing? <a href="/shows/<%= @chosen_show.id %>/songs/new">Add a song for <em><%= @chosen_show.title %></em></a>!</li>
-</ul
+
+</div>
 
 <p>Back to the <a href="/shows">list of shows</a></p>

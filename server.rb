@@ -6,8 +6,6 @@ require_relative 'config/environments'
 require_relative 'models/show'
 require_relative 'models/song'
 
-binding.pry
-
 helpers do; end
 
 after do
@@ -81,8 +79,8 @@ post "/shows/:id/songs/?" do
   song.embed_id = params[:youtube_link].split("v=")[1]
 
   # If user input passes validation, it is
-  # persisted to the database. Else, user is
-  # redirected back to the form
+  # persisted to the database and redirected to 
+  # view the song. Else redirected back to the form
   if song.valid?
     song.save!
     redirect "shows/#{song.show_id}/songs/#{song.id}"

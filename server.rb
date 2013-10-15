@@ -76,7 +76,7 @@ post "/shows/:id/songs/?" do
   song = Song.new
   song.show_id = params[:id]
   song.title = params[:title]
-  song.embed_id = params[:youtube_link].split("v=")[1]
+  song.embed_id = params[:youtube_link].split("v=")[1][0, 11]
 
   # If user input passes validation, it is
   # persisted to the database and redirected to 

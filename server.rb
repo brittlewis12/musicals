@@ -24,12 +24,12 @@ end
 get "/shows/?" do
   @shows = Show.all.order("id ASC")
 
-  erb :shows
+  erb :'shows/shows'
 end
 
 # Form to create new show
 get "/shows/new/?" do
-  erb :new_show
+  erb :'shows/new_show'
 end
 
 # Create action - new show - redirects to that
@@ -62,14 +62,14 @@ end
 get "/shows/:id/?" do
   @chosen_show = Show.find(params[:id].to_i)
 
-  erb :single_show
+  erb :'shows/single_show'
 end
 
 # Form to create new songs
 get "/shows/:id/songs/new/?" do
   @id = params[:id]
 
-  erb :new_song
+  erb :'songs/new_song'
 end
 
 # Create action - new songs for a show - redirects
@@ -98,12 +98,12 @@ get "/shows/:id/songs/?" do
   @chosen_show = Show.find(params[:id])
   @songs = @chosen_show.songs
 
-  erb :songs
+  erb :'songs/songs'
 end
 
 # Shows just one song from the show
 get "/shows/:show_id/songs/:song_id/?" do
   @chosen_song = Show.find(params[:show_id]).songs.find(params[:song_id])
 
-  erb :single_song
+  erb :'songs/single_song'
 end
